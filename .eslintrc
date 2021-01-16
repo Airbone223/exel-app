@@ -9,7 +9,11 @@
     "semi": "off",
     "arrow-parens": "off",
     "comma-dangle": "off",
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "no-trailing-spaces": "off",
+    "indent": "off",
+    "no-debugger": "off",
+    "max-len": "off"
   },
   "extends": [
     "eslint:recommended",

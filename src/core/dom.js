@@ -2,7 +2,7 @@ class Dom {
     constructor(selector) {
 // eslint-disable-next-line max-len
         this.$el = typeof selector === 'string' ? document.querySelector(selector) : selector
-        this.$$listener ={}
+        this.$$listener = {}
     }
 
     html(html) {
@@ -36,6 +36,30 @@ class Dom {
         } else {
             this.$el.appendChild(node)
         }
+    }
+
+    closest(selector) {
+        return $(this.$el.closest(selector))
+    }
+
+    getCoords() {
+        return this.$el.getBoundingClientRect()
+    }
+
+    get data() {
+        return this.$el.dataset
+    }
+
+    css(styles = {}) {
+        Object
+            .keys(styles)
+            .forEach(key => {
+            this.$el.style[key] = styles[key]
+        })
+    }
+
+    findAll(selector) {
+        return this.$el.querySelectorAll(selector)
     }
 }
 

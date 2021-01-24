@@ -1,7 +1,7 @@
-@import "mixins";
 @import "variables";
+@import "mixins";
 
-.exel__table {
+.excel__table {
   position: absolute;
   left: 0;
   right: 0;
@@ -9,14 +9,14 @@
   overflow-x: auto;
   padding-bottom: 2px;
 
-  & .row {
+  .row {
     display: flex;
     flex-direction: row;
     min-height: 20px;
     height: $row-height;
   }
 
-  & .row-info {
+  .row-info {
     position: relative;
     display: flex;
     justify-content: center;
@@ -28,35 +28,36 @@
     border-top: none;
   }
 
-  & .row-data {
+  .row-data {
     display: flex;
   }
 
-  & .column {
+  .column {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #f8f9fa;
     min-width: 40px;
     width: $cell-width;
-    height: 100%;
     border: 1px solid $border-color;
-    border-top: none;
-    border-left: none;
-    position:relative;
+    border-top: 0;
+    border-left: 0;
+    height: 100%;
   }
 
-  & .cell {
+  .cell {
     min-width: 40px;
     padding: 5px;
     width: $cell-width;
     height: 100%;
     border: 1px solid #e2e3e3;
-    border-top: none;
-    border-left: none;
+    border-top: 0;
+    border-left: 0;
     color: #111;
     white-space: nowrap;
     outline: none;
+
 
     &.selected {
       border: none;
@@ -64,30 +65,36 @@
       z-index: 2;
     }
   }
-  & .col-resize, & .row-resize {
+
+  .col-resize, .row-resize {
     position: absolute;
-    right: 0;
     bottom: 0;
+    right: 0;
     background: $primary-color;
     opacity: 0;
     z-index: 1000;
-  &:hover {
+
+    &:hover {
       opacity: 1!important;
     }
   }
 
-& .col-resize {
-  top: 0;
-  width: $resizer-size;
-  &:hover {
-    cursor: col-resize;
+  .col-resize {
+    top: 0;
+    width: 4px;
+
+    &:hover {
+      cursor: col-resize;
+    }
   }
-}
-  & .row-resize {
+
+  .row-resize {
     left: 0;
-    height: $resizer-size;
+    height: 4px;
+
     &:hover {
       cursor: row-resize;
     }
   }
+
 }

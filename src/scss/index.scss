@@ -1,11 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import "~normalize.css";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import "header";
 @import "toolbar";
 @import "formula";
 @import "table";
 @import "dashboard";
-
 
 * {
   margin: 0;
@@ -18,7 +17,7 @@ body {
   font-size: 12px;
 }
 
-.exel {
+.excel {
   position: relative;
   color: #888;
   height: 100%;

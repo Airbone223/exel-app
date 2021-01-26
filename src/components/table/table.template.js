@@ -1,3 +1,7 @@
+import {toInlineStyles} from '@core/utils'
+import {defaultStyles} from '@/constans'
+import {parse} from '@core/parse'
+
 const CODES = {
   A: 65,
   Z: 90
@@ -25,6 +29,10 @@ function toCell(state, row) {
     const id = `${row}:${col}`
     const width = getWidth(state.colState, col)
     const data = state.dataState[id] || ''
+    const styles = toInlineStyles({
+      ...defaultStyles,
+      ...state.stylesState[id]
+    })
 
     return `
       <div 
@@ -32,9 +40,10 @@ function toCell(state, row) {
         contenteditable 
         data-col="${col}"
         data-type="cell"
+        data-value="${data || ''}"
         data-id="${id}"
-        style="width: ${width}"
-      >${data}</div>
+        style="${styles}; width: ${width}"
+      >${parse(data)}</div>
     `
   }
 }
@@ -74,10 +83,8 @@ function toChar(_, index) {
 }
 
 export function createTable(rowsCount = 15, state = {}) {
-  console.log(state)
   const colsCount = CODES.Z - CODES.A + 1 // Compute cols count
   const rows = []
-
   const cols = new Array(colsCount)
       .fill('')
       .map(toChar)

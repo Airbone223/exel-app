@@ -1,4 +1,4 @@
-import {Page} from '@core/Page'
+import {Page} from '@core/pages/Page'
 import {$} from '@core/dom'
 import {createRecordsTable} from '@core/pages/dashboard.functions'
 

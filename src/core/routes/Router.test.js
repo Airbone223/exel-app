@@ -15,7 +15,6 @@ class Excel extends Page {
         return root
     }
 }
-
 describe('Router', () => {
     let router
     let $root

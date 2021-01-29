@@ -20,7 +20,7 @@ export class Router {
         this.changePageHandler()
     }
 
-    async changePageHandler(event) {
+    async changePageHandler() {
         if (this.page) {
             this.page.destroy()
         }

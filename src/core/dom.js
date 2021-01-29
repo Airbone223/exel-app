@@ -108,6 +108,10 @@ class Dom {
     return this
   }
 
+  toggle(className) {
+    this.$el.classList.toggle(className)
+  }
+
   removeClass(className) {
     this.$el.classList.remove(className)
     return this

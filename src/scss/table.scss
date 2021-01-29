@@ -28,6 +28,11 @@
     border-top: none;
   }
 
+  .row-info-first {
+    border-right: 3px solid $border-color;
+    border-bottom: 3px solid $border-color;
+  }
+
   .row-data {
     display: flex;
   }
@@ -54,7 +59,7 @@
     border: 1px solid #e2e3e3;
     border-top: 0;
     border-left: 0;
-    color: #111;
+    color: #000000;
     white-space: nowrap;
     outline: none;
 

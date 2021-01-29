@@ -9,7 +9,7 @@ export class Toolbar extends ExcelStateComponent {
   constructor($root, options) {
     super($root, {
       name: 'Toolbar',
-      listeners: ['click'],
+      listeners: ['click', 'change'],
       subscribe: ['currentStyles'],
       ...options
     })
@@ -33,11 +33,57 @@ export class Toolbar extends ExcelStateComponent {
 
   onClick(event) {
     const $target = $(event.target)
+    if ($target.data.change) {
+      const className = $target.data.change === 'changeTextColor'
+          ? 'container__text'
+          : 'container__background'
+      const removeClass = $target.data.change === 'changeTextColor'
+          ? 'container__background'
+          : 'container__text'
+      const removeSelector = $target.data.change === 'changeTextColor'
+          ? '[data-type="colorBarBackground"]'
+          : '[data-type="colorBarText"]'
+      const selector = $target.data.change === 'changeTextColor'
+          ? '[data-type="colorBarText"]'
+          : '[data-type="colorBarBackground"]'
+      const removeTag = this.$root.find(removeSelector)
+      removeTag.removeClass(removeClass)
+      const root = this.$root.find(selector)
+      root.toggle(className)
+    }
+    if ($target.data.color) {
+      console.log($target.data.type)
+      const value = $target.data.type === "backgroundColor"
+          ? {backgroundColor: $target.data.color}
+          :{color: $target.data.color}
+      this.$emit('toolbar:applyStyle', value)
+      const key = Object.keys(value)[0]
+      this.setState({[key]: value[key]})
+    }
+
+
     if ($target.data.type === 'button') {
       const value = JSON.parse($target.data.value)
       this.$emit('toolbar:applyStyle', value)
       const key = Object.keys(value)[0]
       this.setState({[key]: value[key]})
     }
+  }
+
+  onChange(event) {
+    let value
+    const target = event.target
+   if (target.dataset.type === 'fontFamily') {
+     value = {
+       fontFamily: event.target.value
+     }
+   } else if (event.target.dataset.type === 'fontSize') {
+     value = {
+       fontSize: event.target.value
+     }
+   }
+    this.$emit('toolbar:applyStyle', value)
+    const key = Object.keys(value)[0]
+    this.setState({[key]: value[key]})
   }
 }

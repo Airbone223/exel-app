@@ -15,7 +15,8 @@
     "indent": "off",
     "no-debugger": "off",
     "max-len": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "quotes": "off"
   },
   "plugins": ["jest"],
   "extends": [

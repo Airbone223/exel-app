@@ -14,14 +14,14 @@ export class Table extends ExcelComponent {
   constructor($root, options) {
     super($root, {
       name: 'Table',
-      listeners: ['mousedown', 'keydown', 'input'],
+      listeners: ['mousedown', 'keydown', 'input', 'paste'],
       subscribe: ['currentText'],
       ...options
     })
   }
 
   toHTML() {
-    return createTable(50, this.store.getState())
+    return createTable(100, this.store.getState())
   }
 
   prepare() {
@@ -81,6 +81,11 @@ export class Table extends ExcelComponent {
     }
   }
 
+
+  onPaste(event) {
+    event.preventDefault()
+    console.warn('Вставка содержимого возможна только в поле Fn')
+  }
   onKeydown(event) {
     const keys = [
       'Enter',
@@ -90,7 +95,6 @@ export class Table extends ExcelComponent {
       'ArrowDown',
       'ArrowUp'
     ]
-
     const {key} = event
 
     if (keys.includes(key) && !event.shiftKey) {

@@ -61,7 +61,9 @@ function toColumn({col, index, width}) {
 }
 
 function createRow(index, content, state) {
-  const resize = index ? '<div class="row-resize" data-resize="row"></div>' : ''
+  const resize = index
+      ? '<div class="row-resize" data-resize="row"></div>'
+      : ''
   const height = getHeight(state, index)
   return `
     <div class="row" 
@@ -69,7 +71,7 @@ function createRow(index, content, state) {
     data-row="${index}"
     style="height: ${height}"
     >
-      <div class="row-info">
+      <div class="row-info ${index? '': 'row-info-first'}">
         ${index ? index : ''}
         ${resize}
       </div>
@@ -83,7 +85,7 @@ function toChar(_, index) {
 }
 
 export function createTable(rowsCount = 15, state = {}) {
-  const colsCount = CODES.Z - CODES.A + 1 // Compute cols count
+  const colsCount = CODES.Z - CODES.A + 1
   const rows = []
   const cols = new Array(colsCount)
       .fill('')

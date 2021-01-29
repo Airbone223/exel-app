@@ -18,6 +18,21 @@
 @import "dashboard";
 @import "loader";
 
+@media screen and (max-width: 500px) {
+.excel__toolbar {
+    height: 84px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+  .excel__formula {
+    top: 124px;
+  }
+  .excel__table {
+    top: 148px;
+  }
+}
+
+
 * {
   margin: 0;
   padding: 0;

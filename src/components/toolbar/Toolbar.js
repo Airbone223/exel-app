@@ -52,7 +52,6 @@ export class Toolbar extends ExcelStateComponent {
       root.toggle(className)
     }
     if ($target.data.color) {
-      console.log($target.data.type)
       const value = $target.data.type === "backgroundColor"
           ? {backgroundColor: $target.data.color}
           :{color: $target.data.color}

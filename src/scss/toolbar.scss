@@ -1,6 +1,7 @@
 @import "variables";
 @import "mixins";
 
+
 .excel__toolbar {
   position: absolute;
   left: 0;
@@ -44,7 +45,7 @@
     &__select__font, &__select__font__size {
       margin: 2px 0px;
       outline: none;
-      border-radius:5px;
+      border-radius: 5px;
       height: 22px;
     }
 
@@ -60,7 +61,7 @@
 
   .button {
     @include button(#90dd90);
-  }
+    }
 
 
   .change__color__container {
@@ -81,7 +82,7 @@
 
       & i {
         font-size: 16px;
-        }
+      }
 
       &:active, &.active {
         color: #90dd90;
@@ -118,17 +119,16 @@
       z-index: 1000;
 
 
-
       .box {
         margin: 0;
         height: 20px;
         width: 20px;
-         &:hover {
-           cursor: pointer;
-           }
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
-
-
 }
+
